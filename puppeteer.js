@@ -17,7 +17,7 @@ let itensClickable = 0;
 
     await navigatePages(page, navPage)
     if (itensClickable > 0) {
-        console.log(`Conected sucessfully with ${itensClickable} people!`);
+        console.log(`Conected successfully with ${itensClickable} people!`);
         
     } else{console.log("I couldn't connect with anyone!");}
     console.log("Shutting down the robot!");
@@ -42,7 +42,7 @@ async function navigatePages(page, navigationPage){
 
     for ( let cont   = 0; cont < resultsPage.length; cont++){
         const result = resultsPage[cont];
-        const block = await result.$('.entity-result__content.entity-result__divider.pt3.pb3.t-12.t-black--light > div.mb1 > div.t-roman.t-sans > div > span.entity-result__title-line.entity-result__title-line--2-lines > span > a > span > span:nth-child(1)');
+        const block  = await result.$('.entity-result__content.entity-result__divider.pt3.pb3.t-12.t-black--light > div.mb1 > div.t-roman.t-sans > div > span.entity-result__title-line.entity-result__title-line--2-lines > span > a > span > span:nth-child(1)');
 
         if(!block) continue;
 
@@ -59,28 +59,31 @@ async function navigatePages(page, navigationPage){
             const follow = await result.$('[data-test-reusable-search-primary-action]');
             if(follow){
                 continue;
+
             }else if (sendMessage){
                 continue;
                 
             }else{
-                await connectar.click('.entity-resultactions.entity-resultdivider > div > button');
-            }
-        
-        }
+
+               await connectar.click('.entity-resultactions.entity-resultdivider > div > button');
+           
       
         await sleep(2000);
 
         const addNote = await page.$('[aria-label="Adicionar nota"]');
-       
+        
         await addNote.click('[aria-label="Adicionar nota"]');
         await sleep (1000);
-        await page.keyboard.type('Olá, Sou Josiane Leite, sou acadêmica de programação pelo DevPlay e está mensagem está sendo enviado para você por um robô que eu mesmo criei para me auxiliar no contato com recrutadores e demonstrar um pouco do meu conhecimento! Veja mais sobre mim no meu GitHub:https://github.com/Josianelbbsa');
+        await page.keyboard.type('Olá, me chamo Josiane e faço parte do Devplay, onde estou aprendendo a desenvolver sistemas. Esta mensagem foi enviada por um robô que eu mesma criei para me auxiliar no contato com recrutadores e demonstrar um pouco do que aprendi! Veja mais sobre mim no meu GitHub: https://github.com/Josianelbbsa');
 
         const sendNote = await page.$('[aria-label="Enviar agora"]');
 
         await sendNote.click('[aria-label="Enviar agora"]');
 
         await sleep(5000);
+    }
+    }
+        
     }
         navPage++
 
