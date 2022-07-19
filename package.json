@@ -1,0 +1,7 @@
+{
+  "name": "BotLinkedin",
+  "packageManager": "yarn@3.2.1",
+  "dependencies": {
+    "puppeteer": "^15.3.1"
+  }
+}
